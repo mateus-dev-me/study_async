@@ -91,3 +91,6 @@ celerybeat-schedule
 
 # ruff 
 .ruff_cache
+
+# poetry
+poetry.lock
