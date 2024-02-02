@@ -94,3 +94,6 @@ celerybeat-schedule
 
 # poetry
 poetry.lock
+
+# Media
+/media
