@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'cabecalho' %}
+
+    <link href="{% static 'users/css/create_user.css' %}" rel="stylesheet">
+    <link href="{% static 'flashcards/css/create_flashcard.css' %}" rel="stylesheet">
+    <link href="{% static 'challenges/css/create_challenge.css' %}" rel="stylesheet">
+    <link href="{% static 'challenges/css/challenge.css' %}" rel="stylesheet">
+    <link href="{% static 'books/css/create_book.css' %}" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+{% endblock 'cabecalho' %}
+
+
+{% block 'conteudo' %}
+  {% include "partials/header.html" %}
+  <div class="container">
+    <br><br>
+    <div class="row">
+      <div class="col-md">
+
+        <div class="box-form">
+          {% if messages %}
+          <br>
+          {% for message in messages %}
+          <section class="alert {{message.tags}}">
+            {{message}}
+          </section>
+          {% endfor %}
+          <br>
+          {% endif %}
+          <form action="{% url 'create_book' %}" method="POST" enctype='multipart/form-data'>{% csrf_token %}
+            <h2 class="fonte-secundaria">Adicionar resumos</h2>
+            <label>Titulo</label>
+            <input type="text" name="title" placeholder="titulo" class="form-control" required>
+            <br>
+            <label>Tags</label>
+            <select class="form-select" name="tags">
+              {% for tag in tags %}
+                <option value="{{ tag.id }}">{{ tag.name }}</option>
+              {% endfor %}
+            </select>
+            <br>
+            <label>Arquivo</label>
+            <input type="file" name="file" class="form-control" required>
+            <br>
+            <input type="submit" class="btn-cadastro" value="Enviar">
+          </form>
+        </div>
+
+      </div>
+      <div class="col-md">
+
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Titulo</th>
+              <th scope="col">Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if books %}
+              {% for book in books %}
+                <tr class="linha">
+                  <td>{{ book.title }}</td>
+                  <td>
+                    <a 
+                      href="{% url 'book' book.id %}" style="color: black; text-decoration: none;" 
+                      class="btn-cadastro"
+                    >
+                      Abrir
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+            {% else %}
+                <tr class="linha">
+                  <td>-----</td>
+                  <td>-----</td>
+                <tr>
+            {% endif %}
+          </tbody>
+        </table>
+        <hr>
+        <h4 class="fonte-secundaria">
+            Views totais: {% if views %} {{ views }} {% else %} 0 {% endif %}
+        </h4>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <br><br>
+    <div class="row">
+      <div class="col-md">
+        <div>
+          <form action="{% url 'create_book' %}" method="GET">{% csrf_token %}
+            <h2 class="fonte-secundaria">Buscar Resumos</h2>
+            <input type="text" name="tags" class="form-control" placeholder="Tags" required>
+            <br>
+            <input type="submit" class="btn-cadastro" value="Buscar">
+          </form>
+        </div>
+      </div>
+      <div class="col-md">
+      </div>
+    </div>
+    <br><br>
+    <br><br>
+    <br><br>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script>
+
+        const container = document.getElementById('pdf-container');
+
+        pdfjsLib.getDocument("{{book.file.url}}").promise.then(pdf => {
+            pdf.getPage(1).then(page => {
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                const viewport = page.getViewport({ scale: 0.6 });
+
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+
+                page.render({ canvasContext: context, viewport }).promise.then(() => {
+                    container.appendChild(canvas);
+                });
+            });
+        });
+    </script>
+{% endblock 'conteudo' %}

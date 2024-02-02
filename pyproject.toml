@@ -1,0 +1,61 @@
+[tool.poetry]
+name = "study-async"
+version = "0.1.0"
+description = ""
+authors = ["mateus-dev-me <mateusmartinsipu2@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "study_async"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^5.0.1"
+pillow = "^10.2.0"
+
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.12.2"
+django-extensions = "^3.2.3"
+
+
+[tool.poetry.group.test.dependencies]
+pytest-cov = "^4.1.0"
+pytest-django = "^4.7.0"
+pytest = "^7.4.4"
+factory-boy = "^3.3.0"
+faker = "^22.5.1"
+
+[tool.ruff]
+line-length = 79
+exclude = [
+  ".venv", 
+  "migrations",
+  ".ruff_cache",
+  "core"
+]
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.pytest.ini_options]
+pythonpath = "." 
+
+[tool.blue.ini_options]
+exclude = '(migrations/, core/)' 
+
+[tool.taskipy.tasks]
+lint = 'ruff . && blue --check . --diff'
+format = 'blue . && isort .'
+pre_run = 'task lint'
+run = 'python3 manage.py runserver'
+clean = 'find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf'
+reset_db = 'python3 manage.py cleanup'
+migrations = 'python3 manage.py migrate'
+pre_test = 'task lint && task clean'
+test = 'pytest -s -x --cov=backend -vv'
+post_test = 'coverage html'
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
