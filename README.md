@@ -6,7 +6,7 @@
 [![CSS Version](https://img.shields.io/badge/CSS-3-blueviolet)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 
-Este projeto foi desenvolvido durante a PSW 9.0 da Pythonando, servindo como um aplicativo para estudos e memorização por meio de flashcards. Os usuários podem criar flashcards para solidificar seus conhecimentos em diferentes assuntos.
+Este projeto foi desenvolvido durante a [PSW 9.0](https://pythonando.com.br/psw/inscricao/psw9.0) da [Pythonando](https://pythonando.com.br), servindo como um aplicativo para estudos e memorização por meio de flashcards. Os usuários podem criar flashcards para solidificar seus conhecimentos em diferentes assuntos.
 
 ## Dependências do projeto
 
