@@ -13,6 +13,23 @@ Este projeto foi desenvolvido durante a [PSW 9.0](https://pythonando.com.br/psw/
 - Python 3.10 ou superior. 
 - Poetry (Gerenciador de pacotes).
 
+## Preview da Aplicação
+
+Inclua aqui imagens representativas do funcionamento e da interface da aplicação.
+
+**Exemplo:**
+
+![Login](docs/tela_login.png)
+
+![Imagem 2](docs/tela_cadastro.png)
+
+![Imagem 2](docs/tela_flashcards.png)
+
+![Imagem 2](docs/tela_iniciar_desafio.png)
+
+![Imagem 2](docs/tela_desafio.png)
+
+
 ## Estrutura do projeto
 
 O projeto Django é composto por 5 aplicativos, além do núcleo central.
