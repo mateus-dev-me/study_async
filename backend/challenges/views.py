@@ -14,14 +14,14 @@ def create_challenge(request):
         difficulties = FlashCard.DIFFICULTY_CHOICES
 
         return render(
-            request, 
-            'new_challenge.html', 
-            { 'categories': categories, 'difficulties': difficulties },
+            request,
+            'new_challenge.html',
+            {'categories': categories, 'difficulties': difficulties},
         )
 
     elif request.method == 'POST':
         title = request.POST.get('title')
-        categories = request.POST.getlist('category') 
+        categories = request.POST.getlist('category')
         difficulty = request.POST.get('difficulty')
         number_questions = request.POST.get('number_questions')
 
@@ -47,9 +47,8 @@ def create_challenge(request):
             messages.add_message(
                 request,
                 constants.ERROR,
-                'Não foi possível criar este desafio, porfavor tente novamente.'
+                'Não foi possível criar este desafio.',
             )
-
 
             return redirect('/challenges/new_challenge')
 
@@ -81,14 +80,13 @@ def list_challenges(request):
         if filter_category:
             challenges = challenges.filter(category=filter_category)
 
-
         return render(
-            request, 
-            'list_challengs.html', 
-            { 
-             'challenges': challenges, 
-             'difficulties': difficulties,
-             'categories': categories,
+            request,
+            'list_challengs.html',
+            {
+                'challenges': challenges,
+                'difficulties': difficulties,
+                'categories': categories,
             },
         )
 
@@ -108,23 +106,23 @@ def challenge(request, id):
                 result['missing'] -= 1
 
                 if flash.got_it_right:
-                    result['hits'] += 1 
+                    result['hits'] += 1
                 else:
                     result['errors'] += 1
 
         return render(
-            request, 
-            'challenge.html', 
-            {'challenge': challenge, 'result': result }
+            request,
+            'challenge.html',
+            {'challenge': challenge, 'result': result},
         )
 
 
 @login_required
 def remove_challenge(request, id):
-   challenge = Challenge.objects.get(id=id) 
-   
-   for flashcard_challange in challenge.flashcards.all():
-       flashcard_challange.delete()
-   challenge.delete()
+    challenge = Challenge.objects.get(id=id)
 
-   return redirect('/challenges/list_challenges')
+    for flashcard_challange in challenge.flashcards.all():
+        flashcard_challange.delete()
+    challenge.delete()
+
+    return redirect('/challenges/list_challenges')

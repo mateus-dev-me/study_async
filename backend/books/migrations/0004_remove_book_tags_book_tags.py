@@ -5,18 +5,18 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("books", "0003_viewbook"),
-        ("flashcards", "0001_initial"),
+        ('books', '0003_viewbook'),
+        ('flashcards', '0001_initial'),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name="book",
-            name="tags",
+            model_name='book',
+            name='tags',
         ),
         migrations.AddField(
-            model_name="book",
-            name="tags",
-            field=models.ManyToManyField(to="flashcards.category"),
+            model_name='book',
+            name='tags',
+            field=models.ManyToManyField(to='flashcards.category'),
         ),
     ]

@@ -5,18 +5,18 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("books", "0001_initial"),
+        ('books', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name="book",
-            name="tags",
+            model_name='book',
+            name='tags',
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name="book",
-            name="title",
+            model_name='book',
+            name='title',
             field=models.CharField(blank=True, max_length=100),
         ),
     ]

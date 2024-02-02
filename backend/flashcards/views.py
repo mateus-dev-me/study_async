@@ -1,10 +1,8 @@
+from challenges.models import FlashCardChallenge
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages import constants
-from django.http import Http404
 from django.shortcuts import redirect, render
-
-from challenges.models import FlashCardChallenge
 
 from .models import Category, FlashCard
 
@@ -15,7 +13,7 @@ def create_flashcard(request):
         flashcards = FlashCard.objects.filter(user=request.user)
         categories = Category.objects.all()
         difficulties = FlashCard.DIFFICULTY_CHOICES
-        
+
         filter_category = request.GET.get('category')
         filter_difficulty = request.GET.get('difficulty')
 
@@ -25,13 +23,13 @@ def create_flashcard(request):
             flashcards = flashcards.filter(difficulty=filter_difficulty)
 
         return render(
-            request, 
-            'new_flashcard.html', 
-            { 
-                'categories': categories, 
+            request,
+            'new_flashcard.html',
+            {
+                'categories': categories,
                 'difficulties': difficulties,
-                'flashcards': flashcards
-            }
+                'flashcards': flashcards,
+            },
         )
     elif request.method == 'POST':
         user = request.user
@@ -39,36 +37,33 @@ def create_flashcard(request):
         response = request.POST.get('response')
         category = request.POST.get('category')
         difficulty = request.POST.get('difficulty')
-        
+
         if len(question.strip()) == 0 or len(response.strip()) == 0:
             messages.add_message(
                 request,
                 constants.ERROR,
-                'Preencha os campos de pergunta e resposta.'
+                'Preencha os campos de pergunta e resposta.',
             )
             return redirect('/flashcards/new_flashcard/')
 
         try:
             flashcard = FlashCard(
-               user = user,
-               question = question,
-               response = response,
-               category_id = category,
-               difficulty = difficulty,
+                user=user,
+                question=question,
+                response=response,
+                category_id=category,
+                difficulty=difficulty,
             )
             flashcard.save()
             messages.add_message(
-                request,
-                constants.SUCCESS,
-                'Flashcard cadastrado com sucesso!'
+                request, constants.SUCCESS, 'Flashcard cadastrado com sucesso!'
             )
             return redirect('/flashcards/new_flashcard')
-        except Exception as err:
-            print(err)
+        except Exception:
             messages.add_message(
                 request,
                 constants.ERROR,
-                'Aconteceu um erro ao cadastrar o flashcard.'
+                'Aconteceu um erro ao cadastrar o flashcard.',
             )
             return redirect('/flashcards/new_flashcard/')
 
@@ -76,15 +71,15 @@ def create_flashcard(request):
 @login_required
 def remove_flashcard(request, id):
     try:
-        flashcard = FlashCard.objects.filter(user=request.user).filter(id=id).first()
+        flashcard = (
+            FlashCard.objects.filter(user=request.user).filter(id=id).first()
+        )
         flashcard.delete()
         messages.add_message(
-            request,
-            constants.SUCCESS,
-            'Flashcard deletado com sucesso.'
+            request, constants.SUCCESS, 'Flashcard deletado com sucesso.'
         )
         return redirect('/flashcards/new_flashcard')
-    except:
+    except Exception:
         return redirect('/flashcards/new_flashcard')
 
 

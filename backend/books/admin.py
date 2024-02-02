@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from .models import Book, ViewBook, Tag
-
+from .models import Book, Tag, ViewBook
 
 admin.site.register(Book)
 admin.site.register(ViewBook)

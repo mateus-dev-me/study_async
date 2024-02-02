@@ -1,7 +1,6 @@
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-
 from challenges.models import Challenge
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 
 
 @login_required
@@ -22,8 +21,8 @@ def report(request, id):
             )
 
         return render(
-            request, 
-            'report.html', 
+            request,
+            'report.html',
             {
                 'challenge': challenge,
                 'result': result,

@@ -6,27 +6,28 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("books", "0002_book_tags_alter_book_title"),
+        ('books', '0002_book_tags_alter_book_title'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="ViewBook",
+            name='ViewBook',
             fields=[
                 (
-                    "id",
+                    'id',
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name="ID",
+                        verbose_name='ID',
                     ),
                 ),
-                ("ip", models.GenericIPAddressField()),
+                ('ip', models.GenericIPAddressField()),
                 (
-                    "book",
+                    'book',
                     models.ForeignKey(
-                        on_delete=django.db.models.deletion.DO_NOTHING, to="books.book"
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to='books.book',
                     ),
                 ),
             ],

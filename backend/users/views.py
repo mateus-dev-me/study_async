@@ -36,15 +36,15 @@ def create(request):
                 password=confirm,
             )
             return redirect('/users/login')
-        except Exception as err:
+        except Exception:
             return redirect('/users/create')
 
+
 def signin(request):
-    if request.method == 'GET': 
+    if request.method == 'GET':
         if request.user.is_authenticated:
             return redirect('/flashcards/new_flashcard')
         return render(request, 'login_user.html')
-        
 
     elif request.method == 'POST':
         username = request.POST.get('username')

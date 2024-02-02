@@ -5,30 +5,30 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("books", "0004_remove_book_tags_book_tags"),
+        ('books', '0004_remove_book_tags_book_tags'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="Tag",
+            name='Tag',
             fields=[
                 (
-                    "id",
+                    'id',
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name="ID",
+                        verbose_name='ID',
                     ),
                 ),
-                ("name", models.CharField(max_length=100)),
-                ("created_at", models.DateTimeField(auto_now_add=True)),
-                ("updated_at", models.DateTimeField(auto_now=True)),
+                ('name', models.CharField(max_length=100)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
             ],
         ),
         migrations.AlterField(
-            model_name="book",
-            name="tags",
-            field=models.ManyToManyField(to="books.tag"),
+            model_name='book',
+            name='tags',
+            field=models.ManyToManyField(to='books.tag'),
         ),
     ]

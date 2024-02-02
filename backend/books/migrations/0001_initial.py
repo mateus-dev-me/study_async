@@ -14,21 +14,21 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="Book",
+            name='Book',
             fields=[
                 (
-                    "id",
+                    'id',
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name="ID",
+                        verbose_name='ID',
                     ),
                 ),
-                ("title", models.CharField(max_length=100)),
-                ("file", models.FileField(upload_to="books")),
+                ('title', models.CharField(max_length=100)),
+                ('file', models.FileField(upload_to='books')),
                 (
-                    "user",
+                    'user',
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.DO_NOTHING,
                         to=settings.AUTH_USER_MODEL,

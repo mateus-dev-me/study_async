@@ -25,6 +25,12 @@ pytest = "^7.4.4"
 factory-boy = "^3.3.0"
 faker = "^22.5.1"
 
+
+[tool.poetry.group.lint.dependencies]
+isort = "^5.13.2"
+blue = "^0.9.1"
+ruff = "^0.2.0"
+
 [tool.ruff]
 line-length = 79
 exclude = [

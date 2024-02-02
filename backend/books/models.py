@@ -1,8 +1,5 @@
-from django.db import models
-
 from django.contrib.auth.models import User
-
-from flashcards.models import Category
+from django.db import models
 
 
 class Tag(models.Model):

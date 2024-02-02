@@ -5,13 +5,13 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("challenges", "0001_initial"),
+        ('challenges', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name="flashcardchallenge",
-            name="got_it_right",
+            model_name='flashcardchallenge',
+            name='got_it_right',
             field=models.BooleanField(),
         ),
     ]
