@@ -1,4 +1,4 @@
-# Sobre o Projeto
+# About the Project
 
 [![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/downloads/release)
 [![Django Version](https://img.shields.io/badge/Django-5.0%2B-green)](https://docs.djangoproject.com/en/stable/releases/)
@@ -6,18 +6,18 @@
 [![CSS Version](https://img.shields.io/badge/CSS-3-blueviolet)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 
-Este projeto foi desenvolvido durante a [PSW 9.0](https://pythonando.com.br/psw/inscricao/psw9.0) da [Pythonando](https://pythonando.com.br), servindo como um aplicativo para estudos e memorização por meio de flashcards. Os usuários podem criar flashcards para solidificar seus conhecimentos em diferentes assuntos.
+This project was developed during [PSW 9.0](https://pythonando.com.br/psw/inscricao/psw9.0) of [Pythonando](https://pythonando.com.br), serving as an application for studying and memorising flashcards. Users can create flashcards to solidify their knowledge of different subjects.
 
-## Dependências do projeto
+## Project dependencies
 
-- Python 3.10 ou superior. 
-- Poetry (Gerenciador de pacotes).
+- Python 3.10 or higher. 
+- Poetry (Package Manager).
 
-## Preview da Aplicação
+## Application Preview
 
-Inclua aqui imagens representativas do funcionamento e da interface da aplicação.
+Include here representative images of the application's operation and interface.
 
-**Exemplo:**
+**Example
 
 ![Login](docs/tela_login.png)
 
@@ -30,54 +30,54 @@ Inclua aqui imagens representativas do funcionamento e da interface da aplicaç�
 ![Imagem 2](docs/tela_desafio.png)
 
 
-## Estrutura do projeto
+## Project structure
 
-O projeto Django é composto por 5 aplicativos, além do núcleo central.
+The Django project consists of 5 applications, in addition to the central core.
 
 ```bash
 .
 ├── backend
-│   ├── core
-│   ├── users
-│   ├── flashcards 
-│   ├── challenges
-│   ├── books
-│   ├── reports
-│   ├── templates
-│   └── manage.py
+│ ├── core
+│ ├── users
+│ ├── flashcards 
+│ ├── challenges
+│ ├── books
+│ ├── reports
+│ ├── templates
+│ └── manage.py
 ├── poetry.lock
 ├── pyproject.toml
 └── README.md
 
 ```
 
-## Instalando as dependências
+## Installing the dependencies
 
-Primeiro instale as dependências do projeto em um ambiente virtual:
+First install the project's dependencies in a virtual environment:
 
 ```bash
 poetry install
 ```
 
-## Ativando o ambiente virtual
+## Activating the virtual environment
 
-Execute o comando abaixo para ativar o ambiente virtual criado pelo poetry:
+Run the command below to activate the virtual environment created by poetry:
 
 ```bash
 poetry shell
 ```
 
-## Execute as migrações
+## Run the migrations
 
-Execute as migrações utilizando o seguinte comando:
+Run the migrations using the following command:
 
 ```bash
 task migrations
 ```
 
-## Execute o projeto
+## Run the project
 
-Para iniciar o projeto, utilize o seguinte comando:
+To start the project, use the following command:
 
 ```bash
 task run
