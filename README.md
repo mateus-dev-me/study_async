@@ -7,13 +7,11 @@
 
 This project was developed during [PSW 9.0](https://pythonando.com.br/psw/inscricao/psw9.0) by [Pythonando](https://pythonando.com.br). It is a study-focused application that uses **flashcards**, allowing users to create cards to review and strengthen their knowledge on various topics.
 
----
 
 ## 🌐 Access the Application
 
-The project is deployed and accessible at: [pyflaskcards.mateus-dev-me.com.br](https://pyflaskcards.mateus-dev-me.com.br)
+The project is deployed and accessible at: [studyasync.mateus-dev-me.com.br](https://studyasync.mateus-dev-me.com.br)
 
----
 
 ## 🚀 Features
 
@@ -21,14 +19,12 @@ The project is deployed and accessible at: [pyflaskcards.mateus-dev-me.com.br](h
 - Challenge mode to test your knowledge.
 - Reports to track performance.
 
----
 
 ## ⚙️ Requirements
 
 - **Python**: 3.10 or higher.
 - **Poetry**: Python dependency manager.
 
----
 
 ## 🖼️ Application Preview
 
@@ -49,7 +45,6 @@ Here are some screenshots of the application in action:
 - **Challenge Mode**  
   ![Challenge](docs/tela_desafio.png)
 
----
 
 ## 🗂️ Project Structure
 
@@ -74,7 +69,6 @@ Below is the main structure of the Django project, which is composed of 5 applic
 └── README.md          # Project documentation
 ```
 
----
 
 ## 🛠️ How to Run the Project
 
@@ -100,7 +94,6 @@ Follow these steps to set up and run the project locally:
 
 Once the server is running, you can access the application in your browser at `http://localhost:8000`.
 
----
 
 ## 🧬 Future Testing
 
