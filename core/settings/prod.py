@@ -3,7 +3,7 @@ from .base import *
 import json
 
 DEBUG = False
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+ALLOWED_HOSTS = ['studyasync.mateus-dev-me.com.br']
 
 DATABASES = {
     'default': {
