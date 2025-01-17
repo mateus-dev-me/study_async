@@ -3,7 +3,7 @@ from .base import *
 import json
 
 DEBUG = False
-ALLOWED_HOSTS = ['study_async.mateus-dev-me.com.br']
+ALLOWED_HOSTS = ['studyasync.mateus-dev-me.com.br']
 
 DATABASES = {
     'default': {
