@@ -1,0 +1,24 @@
+<nav style="background-color: var(--main-color)" class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="{% url 'flashcards:home' %}">&nbsp&nbspStudy.Async</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Flashcard
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="{% url 'flashcards:home' %}">Criar flashcard</a></li>
+          <li><a class="dropdown-item" href="{% url 'challenges:create' %}">Novo desafio</a></li>
+          <li><a class="dropdown-item" href="{% url 'challenges:list' %}">Listar desafios</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'books:create' %}">Apostilas</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'users:logout' %}">Sair</a></li>
+    </ul>
+  </div>
+</nav>

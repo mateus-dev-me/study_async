@@ -1,0 +1,62 @@
+# Python bytecode
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.PYENV/
+
+# Django migrations
+*/migrations/*
+
+# Database files
+*.db
+*.sqlite3
+
+# Node modules (if using Node.js for frontend)
+node_modules/
+
+# Logs
+*.log
+
+# Coverage reports
+.coverage
+*.cover
+nosetests.xml
+coverage.xml
+*.hypothesis/
+
+# Dockerfile itself
+Dockerfile
+
+# Build and temporary files
+*.bak
+*.swp
+*.swo
+*.swn
+*.tmp
+*.temp
+.DS_Store
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+*.sublime-workspace
+*.sublime-project
+
+# Static and media files (if they are generated during build time)
+static/
+media/
+
+# Secrets or sensitive files (ensure they're excluded)
+*.env
+*.json
+*.yaml
+*.yml
+

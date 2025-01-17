@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "study-async"
+name = "study_async"
 version = "0.1.0"
 description = ""
 authors = ["mateus-dev-me <mateusmartinsipu2@gmail.com>"]
@@ -11,56 +11,75 @@ packages = [{include = "study_async"}]
 python = "^3.10"
 django = "^5.0.1"
 pillow = "^10.2.0"
+django-environ = "^0.12.0"
+gunicorn = "^23.0.0"
+psycopg2-binary = "^2.9.10"
 
 
 [tool.poetry.group.dev.dependencies]
 taskipy = "^1.12.2"
 django-extensions = "^3.2.3"
+ruff = "^0.9.1"
 
 
 [tool.poetry.group.test.dependencies]
-pytest-cov = "^4.1.0"
-pytest-django = "^4.7.0"
 pytest = "^7.4.4"
-factory-boy = "^3.3.0"
-faker = "^22.5.1"
-
-
-[tool.poetry.group.lint.dependencies]
-isort = "^5.13.2"
-blue = "^0.9.1"
-ruff = "^0.2.0"
-
-[tool.ruff]
-line-length = 79
-exclude = [
-  ".venv", 
-  "migrations",
-  ".ruff_cache",
-  "core"
-]
-
-[tool.isort]
-profile = "black"
-line_length = 79
+pytest-cov = "^6.0.0"
+pytest-django = "^4.9.0"
+faker = "^33.3.1"
+factory-boy = "^3.3.1"
 
 [tool.pytest.ini_options]
-pythonpath = "." 
+pythonpath = "."
+python_files = ["test_*.py", "*_test.py"]
+addposts = "-p no:warning"
 
-[tool.blue.ini_options]
-exclude = '(migrations/, core/)' 
+[tool.coverage.run]
+omit = [
+    "__init__.py",
+    "manage.py",
+    "**/config/*",
+    "**/migrations/*",
+    "conftest.py",
+    "**/_tests/*",
+]
+
+[tool.ruff]
+extend-exclude = [
+  ".venv",
+  "migrations",
+  "core",
+  "manage.py",
+  ".ruff_cache",
+  "_tests",
+]
+line-length = 79
+indent-width = 4
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+docstring-code-format = true
 
 [tool.taskipy.tasks]
-lint = 'ruff . && blue --check . --diff'
-format = 'blue . && isort .'
-pre_run = 'task lint'
-run = 'python3 manage.py runserver'
-clean = 'find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf'
-reset_db = 'python3 manage.py cleanup'
-migrations = 'python3 manage.py migrate'
-pre_test = 'task lint && task clean'
-test = 'pytest -s -x --cov=backend -vv'
-post_test = 'coverage html'
+pre_run = "python manage.py migrate"
+run = "python manage.py runserver"
+
+pre_test = "task lint"
+test = "pytest --cov=. -vv"
+post_test = "coverage html"
+
+lint = "ruff check . && ruff check . --diff"
+format= "ruff check . --fix && ruff format ."
+
+pre_reset_db = "python manage.py clean_pyc"
+reset_db = "python manage.py reset_db"
+
+shell = "python manage.py shell_plus"
 
 [build-system]
 requires = ["poetry-core"]
