@@ -7,8 +7,8 @@ services:
     restart: always
     volumes:
       - .:/app
-      - /app/staticfiles:/staticfiles # Diretório de arquivos estáticos dentro do container Nginx
-      - /app/media:/media
+      - static-data:/staticfiles # Diretório de arquivos estáticos dentro do container Nginx
+      - media-data:/media
     ports:
       - "8000:8000"
     env_file:
