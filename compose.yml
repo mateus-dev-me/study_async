@@ -3,9 +3,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: django_app
+    container_name: study_async
+    restart: always
     volumes:
       - .:/app
+      - static-data:/vol/static
+      - media-data:/vol/media
     ports:
       - "8000:8000"
     env_file:
@@ -15,7 +18,8 @@ services:
 
   database:
     image: postgres:15
-    container_name: postgres_db
+    container_name: study_async_db
+    restart: always
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER} 
@@ -26,5 +30,7 @@ services:
       - pgdata:/var/lib/postgresql/data
 
 volumes:
+  static-data: {}
+  media-data: {}
   pgdata: {}
 
