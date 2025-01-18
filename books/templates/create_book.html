@@ -14,7 +14,7 @@
 
 
 {% block 'conteudo' %}
-  {% include "partials/header.html" %}
+  {% include "global/partials/header.html" %}
   <div class="container">
     <br><br>
     <div class="row">
@@ -66,7 +66,7 @@
                   <td>{{ book.title }}</td>
                   <td>
                     <a 
-                      href="{% url 'book' book.id %}" style="color: black; text-decoration: none;" 
+                      href="{% url 'books:detail' book.id %}" style="color: black; text-decoration: none;" 
                       class="btn-cadastro"
                     >
                       Abrir
