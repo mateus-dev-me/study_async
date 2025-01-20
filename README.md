@@ -7,11 +7,18 @@
 
 This project was developed during [PSW 9.0](https://pythonando.com.br/psw/inscricao/psw9.0) by [Pythonando](https://pythonando.com.br). It is a study-focused application that uses **flashcards**, allowing users to create cards to review and strengthen their knowledge on various topics.
 
+## 🔗 Table of Contents
+
+1. [Access the Application](#🌐-access-the-application)
+2. [Features](#🚀-features)
+3. [Requirements](#⚙%ef%b8%8f-requirements)
+4. [Application Preview](#🖼%ef%b8%8f-application-preview)
+5. [How to Run the Project](#🔧-how-to-run-the-project)
+6. [Future Testing](#🧬-future-testing)
 
 ## 🌐 Access the Application
 
 The project is deployed and accessible at: [studyasync.mateus-dev-me.com.br](https://studyasync.mateus-dev-me.com.br)
-
 
 ## 🚀 Features
 
@@ -19,12 +26,10 @@ The project is deployed and accessible at: [studyasync.mateus-dev-me.com.br](htt
 - Challenge mode to test your knowledge.
 - Reports to track performance.
 
-
 ## ⚙️ Requirements
 
 - **Python**: 3.10 or higher.
 - **Poetry**: Python dependency manager.
-
 
 ## 🖼️ Application Preview
 
@@ -45,32 +50,7 @@ Here are some screenshots of the application in action:
 - **Challenge Mode**  
   ![Challenge](docs/tela_desafio.png)
 
-
-## 🗂️ Project Structure
-
-Below is the main structure of the Django project, which is composed of 5 applications and a central core:
-
-```bash
-.
-├── core               # Project configuration and core
-├── users              # User management
-├── flashcards         # Flashcard creation and management logic
-├── challenges         # Challenge module
-├── books              # Management of complementary materials
-├── reports            # Report generation
-├── templates          # HTML templates
-├── manage.py          # Django's main command
-├── poetry.lock        # Poetry-managed dependencies file
-├── pyproject.toml     # Project configurations
-├── requirements.txt   # Python dependencies file
-├── Dockerfile         # Docker container instructions
-├── compose.yml        # Docker Compose configuration
-├── .env.example       # Example environment variables file
-└── README.md          # Project documentation
-```
-
-
-## 🛠️ How to Run the Project
+## 🔧 How to Run the Project
 
 Follow these steps to set up and run the project locally:
 
@@ -93,7 +73,6 @@ Follow these steps to set up and run the project locally:
    ```
 
 Once the server is running, you can access the application in your browser at `http://localhost:8000`.
-
 
 ## 🧬 Future Testing
 
@@ -144,9 +123,5 @@ To ensure the quality and reliability of the application, testing will be implem
    - [ ] Views
 
 Stay tuned for updates as we enhance the project's testing capabilities! 🚀
-
----
-
-Let me know if you'd like further additions or adjustments! 😊
 
 
