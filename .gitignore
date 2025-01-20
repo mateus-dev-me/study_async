@@ -97,3 +97,5 @@ poetry.lock
 
 # Media
 /media
+
+/data/

@@ -5,7 +5,7 @@ description = ""
 authors = ["mateus-dev-me <mateusmartinsipu2@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "study_async"}]
+packages = [{include = "app"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -14,6 +14,7 @@ pillow = "^10.2.0"
 django-environ = "^0.12.0"
 gunicorn = "^23.0.0"
 psycopg2-binary = "^2.9.10"
+python-dotenv = "^1.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -30,12 +31,13 @@ faker = "^33.3.1"
 factory-boy = "^3.3.1"
 
 [tool.pytest.ini_options]
-pythonpath = "."
+pythonpath = "app"
 python_files = ["test_*.py", "*_test.py"]
 addposts = "-p no:warning"
 
 [tool.coverage.run]
 omit = [
+    "**/data/*",
     "__init__.py",
     "manage.py",
     "**/config/*",
@@ -47,6 +49,7 @@ omit = [
 [tool.ruff]
 extend-exclude = [
   ".venv",
+  "data",
   "migrations",
   "core",
   "manage.py",
@@ -66,20 +69,23 @@ quote-style = 'single'
 docstring-code-format = true
 
 [tool.taskipy.tasks]
-pre_run = "python manage.py migrate"
-run = "python manage.py runserver"
+pre_run = "python app/manage.py migrate --noinput"
+run = "python app/manage.py runserver"
 
 pre_test = "task lint"
-test = "pytest --cov=. -vv"
+test = "pytest --cov=app -vv"
 post_test = "coverage html"
 
-lint = "ruff check . && ruff check . --diff"
-format= "ruff check . --fix && ruff format ."
+lint = "ruff check app && ruff check app --diff"
+format= "ruff check app --fix && ruff format app"
 
-pre_reset_db = "python manage.py clean_pyc"
-reset_db = "python manage.py reset_db"
+pre_migrate = "python app/manage.py makemigrations --noinput"
+migrate = "python app/manage.py migrate --noinput"
 
-shell = "python manage.py shell_plus"
+pre_reset_db = "python app/manage.py clean_pyc"
+reset_db = "python app/manage.py reset_db --noinput"
+
+shell = "python app/manage.py shell_plus"
 
 [build-system]
 requires = ["poetry-core"]
