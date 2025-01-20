@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'cabecalho' %}
+
+    <link href="{% static 'users/css/create_user.css' %}" rel="stylesheet">
+    <link href="{% static 'flashcards/css/create_flashcard.css' %}" rel="stylesheet">
+    <link href="{% static 'challenges/css/create_challenge.css' %}" rel="stylesheet">
+    <link href="{% static 'challenges/css/challenge.css' %}" rel="stylesheet">
+    <link href="{% static 'books/css/create_book.css' %}" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+{% endblock 'cabecalho' %}
+
+
+{% block 'conteudo' %}
+    {% include "global/partials/header.html" %}
+    <div class="container">
+        <br><br>
+        <div class="row">
+            <h1>Apostila: {{ book.title}}</h1>
+            <br>
+            <br>
+            <div class="col-md">
+                
+            <a class="font-principal" style="text-decoration: none" href="{{book.file.url}}">
+              <div style="width: 100%;" id="pdf-container"></div>
+            </a>
+            </div>
+            <div class="col-md">
+
+                <p class="fonte-secundaria">Views únicas: {{ unique_views}}</p>
+                <p class="fonte-secundaria">Views totais: {{ total_views }}</p>
+                <hr>
+
+                <div >
+                  <form action="" method="">{% csrf_token %}
+                    <h2>Deixe sua Avalicação</h2>
+                    <select class="form-select" name="avaliation">
+                      <option value="bom">Bom</option>
+                      <option value="ruim">Ruim</option>
+                      <option value="otimo">Ótimo</option>
+                    </select>
+                    <br>
+                    <input type="submit" class="btn-cadastro" value="Avaliar">
+                  </form>
+                <div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+  <script>
+
+      const container = document.getElementById('pdf-container');
+
+      pdfjsLib.getDocument("{{book.file.url}}").promise.then(pdf => {
+          pdf.getPage(1).then(page => {
+              const canvas = document.createElement('canvas');
+              const context = canvas.getContext('2d');
+              const viewport = page.getViewport({ scale: 0.5 });
+
+              canvas.width = viewport.width;
+              canvas.height = viewport.height;
+
+              page.render({ canvasContext: context, viewport }).promise.then(() => {
+                  container.appendChild(canvas);
+              });
+          });
+      });
+  </script>
+{% endblock 'conteudo' %}

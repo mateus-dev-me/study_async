@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'cabecalho' %}
+
+    <link href="{% static 'users/css/create_user.css' %}" rel="stylesheet">
+    <link href="{% static 'flashcards/css/create_flashcard.css' %}" rel="stylesheet">
+    <link href="{% static 'challenges/css/start_challenge.css' %}" rel="stylesheet">
+
+{% endblock 'cabecalho' %}
+
+
+{% block 'conteudo' %}
+    {% include 'global/partials/header.html' %}
+    <div class="container ctx">
+        <br>
+        <br>
+        <h2 class="fonte-principal">Novo desafio</h2>
+        <p class="fonte-secundaria">Escolha as categorias e a dificuldade do desafio</p>
+        {% if messages %}
+            {% for message in messages %}
+                <section class="alert {{message.tags}}">
+                    {{ message }}
+                </section>
+            {% endfor %}
+        {% endif %}
+        <div class="row">
+            <div class="col-md">
+                <form action="{% url 'challenges:create' %}" method="POST">{% csrf_token%}
+                    <label for="">Titulo</label>
+                    <input type="text" class="form-control" name="title" required>
+                    </div>
+                        <div class="col-md">
+                            <label>Categoria</label>
+                            <select name="category" class="form-select" multiple aria-label="multiple select example">
+                                {% for category in categories %}
+                                    <option value="{{category.id}}">
+                                        {{category.name}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md">
+                            <label>Dificuldade</label>
+                            <select name="difficulty" class="form-select">
+                                {% for difficulty in difficulties %}
+                                    <option value="{{difficulty.0}}">
+                                        {{difficulty.1}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="col-md">
+                            <label>Qtd questões</label>
+                            <input type="number" class="form-control" name="number_questions" required>
+                        </div>
+
+                    </div>
+                    <br>
+                    <br>
+                    <input type="submit" class="btn-cadastro" value="Criar desafio">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock 'conteudo' %}
